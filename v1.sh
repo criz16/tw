@@ -177,7 +177,7 @@ echo -e "                $GREEN
 ░╚════╝░╚═╝░░╚═╝╚═╝╚══════╝    
 
   echo -e "$GREEN   WEBSOCKET SSH SERVER $RESET"
-   echo -e "$GREEN   IP ADDRESS     :  $(curl -s https://api.ipify.org)$RESET"
+   echo -e "$GREEN   IP ADDRESS     : $
    echo -e "$RED     DROPBEAR port  : 550 $RESET"
    echo -e "$RED     SSL port       : 443 $RESET"
    echo -e "$RED     SSH WEBSOCKET  : 80 $RESET"
