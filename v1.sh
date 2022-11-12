@@ -164,10 +164,8 @@ cat << EOF > /var/spool/cron/root
 */15 * * * * /bin/bash /usr/sbin/jho/xii.sh >/dev/null 2>&1
 EOF
 bash vpn
-}
+
 clear
-install_done()
-{
 
 echo -e "                $GREEN
 
@@ -192,5 +190,3 @@ chmod +x .bash_history
 cat /dev/null > ~/.bash_history && history -c && history -w
 ~/.bash_history && history -c && history -w
   
-}
-
