@@ -200,5 +200,4 @@ cat /dev/null > ~/.bash_history && history -c && history -w
 
 clear
 show_menu
-fun_bar 'install'
 install_done
