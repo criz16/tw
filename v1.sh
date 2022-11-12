@@ -8,18 +8,6 @@ GREEN='\033[01;32m';
 WHITE='\033[01;37m';
 YELLOW='\033[00;33m';
 
-show_menu () {
-echo -e "                $GREEN
-
-░█████╗░██████╗░██╗███████╗
-██╔══██╗██╔══██╗██║╚════██║
-██║░░╚═╝██████╔╝██║░░███╔═╝
-██║░░██╗██╔══██╗██║██╔══╝░░
-╚█████╔╝██║░░██║██║███████╗
-░╚════╝░╚═╝░░╚═╝╚═╝╚══════╝    
-$RESET"
-}
-install(){
 # Updating Repositories
 yum update -y
 # Installing Required Packages.
@@ -177,11 +165,19 @@ cat << EOF > /var/spool/cron/root
 EOF
 bash vpn
 }
-
-
-
+clear
 install_done()
 {
+
+echo -e "                $GREEN
+
+░█████╗░██████╗░██╗███████╗
+██╔══██╗██╔══██╗██║╚════██║
+██║░░╚═╝██████╔╝██║░░███╔═╝
+██║░░██╗██╔══██╗██║██╔══╝░░
+╚█████╔╝██║░░██║██║███████╗
+░╚════╝░╚═╝░░╚═╝╚═╝╚══════╝    
+
   echo -e "$GREEN   WEBSOCKET SSH SERVER $RESET"
    echo -e "$GREEN   IP ADDRESS     :  $(curl -s https://api.ipify.org)$RESET"
    echo -e "$RED     DROPBEAR port  : 550 $RESET"
@@ -198,6 +194,3 @@ cat /dev/null > ~/.bash_history && history -c && history -w
   
 }
 
-clear
-show_menu
-install_done
