@@ -7,8 +7,11 @@ RESET='\033[0m';
 GREEN='\033[01;32m';
 WHITE='\033[01;37m';
 YELLOW='\033[00;33m';
-
-echo -e "$GREEN   Choose or Type a Plan:"
+clear
+echo -e "$GREEN   CHOOSE YOUR SERVER PLAN:"
+echo
+echo
+echo
 echo "Type of your Server"
 PS3='Choose or Type a Plan: '
 options=("Premium" "VIP" "Private" "Quit")
