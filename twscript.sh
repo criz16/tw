@@ -1,3 +1,33 @@
+Skip to content
+Search or jump to…
+Pull requests
+Issues
+Codespaces
+Marketplace
+Explore
+ 
+@criz16 
+criz16
+/
+tw
+Public
+Code
+Issues
+Pull requests
+Actions
+Projects
+Wiki
+Security
+Insights
+Settings
+tw/test.sh
+@criz16
+criz16 Update test.sh
+Latest commit fbec82b 11 minutes ago
+ History
+ 1 contributor
+308 lines (281 sloc)  9.64 KB
+
 #!/bin/bash
 ln -fs /usr/share/zoneinfo/Asia/Manila /etc/localtime
 sed -i "s/SELINUX=enforcing/SELINUX=disabled/g" /etc/selinux/config &> /dev/null
@@ -7,6 +37,51 @@ RESET='\033[0m';
 GREEN='\033[01;32m';
 WHITE='\033[01;37m';
 YELLOW='\033[00;33m';
+clear
+echo -e "$GREEN   CHOOSE YOUR SERVER PLAN:"
+echo "";
+echo "";
+echo "Type of your Server" 
+PS3='Choose or Type a Plan: '
+echo
+options=("Premium" "VIP" "Private" "Quit")
+select opt in "${options[@]}"; do
+case "$opt,$REPLY" in
+Premium,*|*,Premium) 
+echo "";
+#############################
+wget -O /usr/local/sbin/ssh.php https://raw.githubusercontent.com/criz16/tw/main/premium.sh -q
+#############################
+echo "";
+echo "1) Premium Selected";
+break ;;
+VIP,*|*,VIP) 
+echo "";
+#############################
+wget -O /usr/local/sbin/ssh.php https://raw.githubusercontent.com/criz16/tw/main/vip.sh -q
+#############################
+echo "";
+echo "2) VIP Selected";
+break ;;
+Private,*|*,Private) 
+echo "";
+#############################
+wget -O /usr/local/sbin/ssh.php https://raw.githubusercontent.com/criz16/tw/main/private.sh -q
+#############################
+echo "";
+echo "3) Private Selected";
+sleep 3s
+break ;;
+Quit,*|*,Quit) echo "Installation Cancelled!!";
+echo "\e[1;31mRebuild your vps and correct the process.\e[0m";
+exit;
+break ;; *)
+echo Invalid: Choose a proper Plan;;
+esac
+done
+
+
+
 fun_bar () {
 comando[0]="$1"
 comando[1]="$2"
@@ -63,15 +138,12 @@ tput cnorm
 
 show_menu () {
 echo -e "                $GREEN
-
-
 ░█████╗░██████╗░██╗███████╗
 ██╔══██╗██╔══██╗██║╚════██║
 ██║░░╚═╝██████╔╝██║░░███╔═╝
 ██║░░██╗██╔══██╗██║██╔══╝░░
 ╚█████╔╝██║░░██║██║███████╗
 ░╚════╝░╚═╝░░╚═╝╚═╝╚══════╝     
-
 $RESET"
 }
 install(){
@@ -167,11 +239,9 @@ cat << XYZZY > /etc/systemd/system/stunnel.service
 [Unit]
 Description=SSL tunnel for network daemons
 After=syslog.target
-
 [Service]
 ExecStart=/usr/bin/stunnel
 Type=forking
-
 [Install]
 WantedBy=multi-user.target
 XYZZY
@@ -220,7 +290,10 @@ systemctl start stunnel
 service crond restart
 mkdir -p /usr/sbin/jho
 yum install php php-mysqli php-mysql php-gd php-mbstring -y
-wget -O /usr/local/sbin/ssh.php https://raw.githubusercontent.com/criz16/tw/main/autogen.sh -q
+
+
+
+#wget -O /usr/local/sbin/ssh.php https://raw.githubusercontent.com/criz16/tw/main/autogen.sh -q
 /bin/cat <<"EOM" >/usr/sbin/jho/xii.sh
 php /usr/local/sbin/ssh.php
 chmod +x /root/active.sh
@@ -258,3 +331,17 @@ clear
 show_menu
 fun_bar 'install'
 install_done
+Footer
+© 2022 GitHub, Inc.
+Footer navigation
+Terms
+Privacy
+Security
+Status
+Docs
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
