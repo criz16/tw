@@ -11,9 +11,9 @@ clear
 echo -e "$YELLOW   CHOOSE YOUR SERVER PLAN:"
 echo
 echo
-echo "$GREEN	Type of your Server"
+echo -e "$GREEN	Type of your Server"
 echo
-PS3='$GREEN		Choose or Type a Plan: '
+echo -e PS3='$GREEN		Choose or Type a Plan: '
 echo
 options=("Premium" "VIP" "Private" "Quit")
 select opt in "${options[@]}"; do
@@ -24,7 +24,7 @@ echo "";
 wget -O /usr/local/sbin/ssh.php https://raw.githubusercontent.com/criz16/tw/main/premium.sh -q
 #############################
 echo "";
-echo "$RED	1) Premium Selected";
+echo -e "$RED	1) Premium Selected";
 break ;;
 VIP,*|*,VIP) 
 echo "";
@@ -32,7 +32,7 @@ echo "";
 wget -O /usr/local/sbin/ssh.php https://raw.githubusercontent.com/criz16/tw/main/vip.sh -q
 #############################
 echo "";
-echo "$RED	2) VIP Selected";
+echo -e "$RED	2) VIP Selected";
 break ;;
 Private,*|*,Private) 
 echo "";
@@ -40,7 +40,7 @@ echo "";
 wget -O /usr/local/sbin/ssh.php https://raw.githubusercontent.com/criz16/tw/main/private.sh -q
 #############################
 echo "";
-echo "$RED	3) Private Selected";
+echo -e "$RED	3) Private Selected";
 sleep 3s
 break ;;
 Quit,*|*,Quit) echo "Installation Cancelled!!";
@@ -50,6 +50,7 @@ break ;; *)
 echo Invalid: Choose a proper Plan;;
 esac
 done
+
 
 
 
