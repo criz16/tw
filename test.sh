@@ -8,10 +8,10 @@ GREEN='\033[01;32m';
 WHITE='\033[01;37m';
 YELLOW='\033[00;33m';
 clear
-echo -e "$RED   CHOOSE YOUR SERVER PLAN:"
-echo
-echo
-echo "Type of your Server"
+echo -e "$GREEN   CHOOSE YOUR SERVER PLAN:"
+echo "";
+echo "";
+echo "Type of your Server" 
 PS3='Choose or Type a Plan: '
 echo
 options=("Premium" "VIP" "Private" "Quit")
@@ -23,7 +23,7 @@ echo "";
 wget -O /usr/local/sbin/ssh.php https://raw.githubusercontent.com/criz16/tw/main/premium.sh -q
 #############################
 echo "";
-echo -e "$RED	1) Premium Selected";
+echo "1) Premium Selected";
 break ;;
 VIP,*|*,VIP) 
 echo "";
@@ -31,7 +31,7 @@ echo "";
 wget -O /usr/local/sbin/ssh.php https://raw.githubusercontent.com/criz16/tw/main/vip.sh -q
 #############################
 echo "";
-echo -e "$RED	2) VIP Selected";
+echo "2) VIP Selected";
 break ;;
 Private,*|*,Private) 
 echo "";
@@ -39,18 +39,16 @@ echo "";
 wget -O /usr/local/sbin/ssh.php https://raw.githubusercontent.com/criz16/tw/main/private.sh -q
 #############################
 echo "";
-echo -e "$RED	3) Private Selected";
+echo "3) Private Selected";
 sleep 3s
 break ;;
 Quit,*|*,Quit) echo "Installation Cancelled!!";
-echo -e "\e[1;31mRebuild your vps and correct the process.\e[0m";
+echo "\e[1;31mRebuild your vps and correct the process.\e[0m";
 exit;
 break ;; *)
 echo Invalid: Choose a proper Plan;;
 esac
 done
-
-
 
 
 
