@@ -1,33 +1,3 @@
-Skip to content
-Search or jump to…
-Pull requests
-Issues
-Codespaces
-Marketplace
-Explore
- 
-@criz16 
-criz16
-/
-tw
-Public
-Code
-Issues
-Pull requests
-Actions
-Projects
-Wiki
-Security
-Insights
-Settings
-tw/test.sh
-@criz16
-criz16 Update test.sh
-Latest commit fbec82b 11 minutes ago
- History
- 1 contributor
-308 lines (281 sloc)  9.64 KB
-
 #!/bin/bash
 ln -fs /usr/share/zoneinfo/Asia/Manila /etc/localtime
 sed -i "s/SELINUX=enforcing/SELINUX=disabled/g" /etc/selinux/config &> /dev/null
@@ -331,17 +301,3 @@ clear
 show_menu
 fun_bar 'install'
 install_done
-Footer
-© 2022 GitHub, Inc.
-Footer navigation
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
