@@ -5,6 +5,11 @@ yum install wget -y && wget https://raw.githubusercontent.com/criz16/tw/main/tws
 
 
 
+yum install wget -y && wget https://raw.githubusercontent.com/criz16/tw/main/api-login-script.sh && chmod +x api-login-script.sh && bash api-login-script.sh
+
+
+
+
 yum install wget -y && wget https://raw.githubusercontent.com/criz16/tw/main/tw-ovpn-ssh-ssl-proxy.sh && chmod +x tw-ovpn-ssh-ssl-proxy.sh && bash tw-ovpn-ssh-ssl-proxy.sh
 
 
