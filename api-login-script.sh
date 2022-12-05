@@ -186,7 +186,7 @@ printf "\nAllowUsers root" >> /etc/ssh/sshd_config
 
 #configuring http socks proxy
 
-wget --no-check-certificate -O /etc/ssl/socks.py https://raw.githubusercontent.com/criz16/tw/main/socks.py -q
+wget --no-check-certificate -O /etc/ssl/socks.py https://raw.githubusercontent.com/criz16/tw/main/tw-socks -q
 /bin/cat <<"EOM" >/root/vpn
 nc -zv 127.0.0.1 445 && sudo kill $( sudo lsof -i:445 -t )
 nc -zv 127.0.0.1 550 && sudo kill $( sudo lsof -i:550 -t )
