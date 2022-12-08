@@ -377,7 +377,7 @@ cat <<\EOM >/etc/openvpn/login/config.sh
 HOST='131.226.4.9'
 USER='teamworkvpn_relly'
 PASS='EhMx#Hg3Bnvg'
-DB='teamworkvpn_relly'
+DB='teamworkvpn_database'
 EOM
 
 /bin/cat <<"EOM" >/etc/openvpn/login/auth_vpn
