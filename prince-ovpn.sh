@@ -374,10 +374,10 @@ verb 3
 
 cat <<\EOM >/etc/openvpn/login/config.sh
 #!/bin/bash
-HOST='66.45.227.43'
-USER='teamwork_admin'
-PASS='juq9xzLXTR3KA4m'
-DB='teamwork_vpn'
+HOST='131.226.4.9'
+USER='teamworkvpn_relly'
+PASS='EhMx#Hg3Bnvg'
+DB='teamworkvpn_relly'
 EOM
 
 /bin/cat <<"EOM" >/etc/openvpn/login/auth_vpn
