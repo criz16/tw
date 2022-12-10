@@ -393,8 +393,7 @@ PRIV="users.user_name='$username' AND users.auth_vpn=md5('$password') AND users.
 Query="SELECT users.user_name FROM users WHERE $PREM OR $VIP OR $PRIV"
 user_name=`mysql -u $USER -p$PASS -D $DB -h $HOST --skip-column-name -e "$Query"`
 
-[ "$user_name" != '' ] && [ "$user_name" = "$username" ] && echo "user : $username" && echo 'authentication ok.' && exit 0 || echo 'authentication failed.'; exit 1
-EOM
+[ "$user_name" != '' ] && [ "$user_name" = "$username" ] && echo "user : $username" && echo 'authentication ok.' && exit 0 || echo 'authentication failed.'; exit 1EOM
 
 #client-connect file
 cat <<'PRINCE05' >/etc/openvpn/login/connect.sh
