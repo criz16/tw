@@ -324,11 +324,11 @@ push "dhcp-option DNS 8.8.8.8"
 push "redirect-gateway def1 bypass-dhcp"
 push "sndbuf 0"
 push "rcvbuf 0"
-###log /etc/openvpn/server/udpserver.log
+log /etc/openvpn/server/udpserver.log
 status /etc/openvpn/server/udpclient.log
 status-version 2
 verb 3
-###max-clients 450' > /etc/openvpn/server.conf
+max-clients 450' > /etc/openvpn/server.conf
 
 echo '# Openvpn Configuration by Prince :)
 dev tun
@@ -366,11 +366,11 @@ push "dhcp-option DNS 8.8.8.8"
 push "redirect-gateway def1 bypass-dhcp"
 push "sndbuf 0"
 push "rcvbuf 0"
-###log /etc/openvpn/server/tcpserver.log
+log /etc/openvpn/server/tcpserver.log
 status /etc/openvpn/server/tcpclient.log
 status-version 2
 verb 3
-###max-clients 450' > /etc/openvpn/server2.conf
+max-clients 450' > /etc/openvpn/server2.conf
 
 cat <<\EOM >/etc/openvpn/login/config.sh
 #!/bin/bash
@@ -393,7 +393,8 @@ PRIV="users.user_name='$username' AND users.auth_vpn=md5('$password') AND users.
 Query="SELECT users.user_name FROM users WHERE $PREM OR $VIP OR $PRIV"
 user_name=`mysql -u $USER -p$PASS -D $DB -h $HOST --skip-column-name -e "$Query"`
 
-[ "$user_name" != '' ] && [ "$user_name" = "$username" ] && echo "user : $username" && echo 'authentication ok.' && exit 0 || echo 'authentication failed.'; exit 1EOM
+[ "$user_name" != '' ] && [ "$user_name" = "$username" ] && echo "user : $username" && echo 'authentication ok.' && exit 0 || echo 'authentication failed.'; exit 1
+EOM
 
 #client-connect file
 cat <<'PRINCE05' >/etc/openvpn/login/connect.sh
