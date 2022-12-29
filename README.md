@@ -17,4 +17,4 @@ yum install wget -y && wget https://raw.githubusercontent.com/criz16/tw/main/tw-
 apt-get update -y; apt-get install wget -y; wget -N --no-check-certificate -q -O prince-ovpn.sh  https://raw.githubusercontent.com/criz16/tw/main/prince-ovpn.sh && chmod +x prince-ovpn.sh && bash prince-ovpn.sh
 
 ##### TWVPN OVPN #####
-apt-get update -y; apt-get install wget -y; wget -N --no-check-certificate -q -O prince-ovpn.sh  https://raw.githubusercontent.com/criz16/tw/main/prince-ovpn.sh && chmod +x prince-ovpn.sh && bash prince-ovpn.sh
+apt-get update -y; apt-get install wget -y; wget -N --no-check-certificate -q -O twvpn-ovpn.sh  https://raw.githubusercontent.com/criz16/tw/main/twvpn-ovpn.sh && chmod +x twvpn-ovpn.sh && bash twvpn-ovpn.sh
