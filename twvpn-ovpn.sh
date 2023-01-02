@@ -372,10 +372,10 @@ verb 3' > /etc/openvpn/server2.conf
 
 cat <<\EOM >/etc/openvpn/login/config.sh
 #!/bin/bash
-HOST='131.226.4.11'
-USER='twvpn_admin'
-PASS='B^uJUqtvIm66'
-DB='twvpn_database'
+HOST='131.226.4.13'
+USER='twjhe_admin'
+PASS='jYWJ9l9nb9yp'
+DB='twjhe_database'
 EOM
 
 /bin/cat <<"EOM" >/etc/openvpn/login/auth_vpn
