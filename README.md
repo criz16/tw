@@ -18,3 +18,6 @@ apt-get update -y; apt-get install wget -y; wget -N --no-check-certificate -q -O
 
 ##### TWVPN OVPN #####
 apt-get update -y; apt-get install wget -y; wget -N --no-check-certificate -q -O twvpn-ovpn.sh  https://raw.githubusercontent.com/criz16/tw/main/twvpn-ovpn.sh && chmod +x twvpn-ovpn.sh && bash twvpn-ovpn.sh
+
+##### TWEAGLE OVPN #####
+apt-get update -y; apt-get install wget -y; wget -N --no-check-certificate -q -O tw-eagle-ovpn.sh  https://raw.githubusercontent.com/criz16/tw/main/tw-eagle-ovpn.sh && chmod +x tw-eagle-ovpn.sh && bash tw-eagle-ovpn.sh
