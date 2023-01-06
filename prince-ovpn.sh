@@ -372,7 +372,7 @@ verb 3' > /etc/openvpn/server2.conf
 
 cat <<\EOM >/etc/openvpn/login/config.sh
 #!/bin/bash
-HOST='131.226.4.11'
+HOST='198.251.89.144'
 USER='jhejheon_teamwork'
 PASS='tdyZO&3QgGXc'
 DB='jhejheon_teamwork'
