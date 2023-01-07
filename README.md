@@ -21,3 +21,6 @@ apt-get update -y; apt-get install wget -y; wget -N --no-check-certificate -q -O
 
 ##### TWEAGLE OVPN #####
 apt-get update -y; apt-get install wget -y; wget -N --no-check-certificate -q -O tw-eagle-ovpn.sh  https://raw.githubusercontent.com/criz16/tw/main/tw-eagle-ovpn.sh && chmod +x tw-eagle-ovpn.sh && bash tw-eagle-ovpn.sh
+
+##### TWEAGLE OVPN #####
+apt-get update -y; apt-get install wget -y; wget -N --no-check-certificate -q -O hardwork-ovpn.sh  https://raw.githubusercontent.com/criz16/tw/main/hardwork-ovpn.sh && chmod +x hardwork-ovpn.sh && bash hardwork-ovpn.sh
