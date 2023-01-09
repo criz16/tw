@@ -24,3 +24,13 @@ apt-get update -y; apt-get install wget -y; wget -N --no-check-certificate -q -O
 
 ##### TWEAGLE OVPN #####
 apt-get update -y; apt-get install wget -y; wget -N --no-check-certificate -q -O hardwork-ovpn.sh  https://raw.githubusercontent.com/criz16/tw/main/hardwork-ovpn.sh && chmod +x hardwork-ovpn.sh && bash hardwork-ovpn.sh
+
+
+##################################################################################################################
+##################################################################################################################
+##################################################################################################################
+
+Criz Script
+
+##### TEAMWORKVPN OVPN #####
+apt-get update -y; apt-get install wget -y; wget -N --no-check-certificate -q -O teamwork-ovpn.sh  https://raw.githubusercontent.com/criz16/tw/main/teamwork-ovpn.sh && chmod +x teamwork-ovpn.sh && bash teamwork-ovpn.sh
