@@ -1009,3 +1009,5 @@ rm *.sh &> /dev/null
 rm -rf ~/.bash_history;history -c;history -w
 clear
 netstat -tunlp
+ echo "Server will secure this server and reboot after 5 seconds"
+  sleep 5
