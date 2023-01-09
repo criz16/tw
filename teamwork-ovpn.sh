@@ -8,8 +8,7 @@ dbhost='198.251.89.144';
 dbuser='jhejheon_teamwork';
 dbpass='tdyZO&3QgGXc';
 dbname='jhejheon_teamwork';
-dbport='3306';
-#ssh user
+##Ssh Account
 USER="webmaster"
 PASS="criz@romero"
 ##certificates
@@ -141,9 +140,6 @@ yum install openvpn sudo -y
 yum install mysql nano -y
 yum install httpd -y
 yum install iptables iptables-services -y
-yum install nc lsof screen -y
-yum install NetworkManager -y
-yum install php php-mysqli php-mysql php-gd php-mbstring -y
 
 MYIP=$(wget -qO- ipv4.icanhazip.com);
 # Making script folders and keys
@@ -299,7 +295,7 @@ client-to-client
 username-as-common-name
 client-cert-not-required
 auth-user-pass-verify /etc/openvpn/script/login.sh via-env
-#max-clients 99999
+max-clients 999
 #push "redirect-gateway def1"
 #push "dhcp-option DNS 1.1.1.1"
 #push "dhcp-option DNS 1.0.0.1"
@@ -338,7 +334,7 @@ client-to-client
 username-as-common-name
 client-cert-not-required
 auth-user-pass-verify /etc/openvpn/script/login.sh via-env
-#max-clients 99999
+max-clients 999
 #push "redirect-gateway def1"
 #push "dhcp-option DNS 1.1.1.1"
 #push "dhcp-option DNS 1.0.0.1"
@@ -351,8 +347,9 @@ verb 3
 connect-retry-max infinite
 EOF
 
-###OPENVPN SOCKS
+###SOCKS
 /bin/cat <<"EOM" >/usr/local/sbin/socks.py
+#!/usr/bin/python
 import socket, threading, thread, select, signal, sys, time, getopt
 
 # Listen
@@ -361,16 +358,15 @@ if sys.argv[1:]:
   LISTENING_PORT = sys.argv[1]
 else:
   LISTENING_PORT = 80
-#Pass
+
+# Pass
 PASS = ''
 
 # CONST
 BUFLEN = 4096 * 4
-TIMEOUT = 60
+TIMEOUT = 500000
 DEFAULT_HOST = '127.0.0.1:1194'
 RESPONSE = 'HTTP/1.0 101 <font color="green">xD cRiz</font>\r\n\r\nContent-Length: 104857600000\r\n\r\n'
-#RESPONSE = 'HTTP/1.1 101 Switching Protocols\r\nContent-Length: 1048576000000\r\n\r\n'
-#RESPONSE = 'HTTP/1.1 200 Hello_World!\r\nContent-length: 0\r\n\r\nHTTP/1.1 200 Connection established\r\n\r\n'  # lint:ok
 
 class Server(threading.Thread):
     def __init__(self, host, port):
@@ -483,7 +479,7 @@ class ConnectionHandler(threading.Thread):
 
             if hostPort != '':
                 passwd = self.findHeader(self.client_buffer, 'X-Pass')
-
+				
                 if len(PASS) != 0 and passwd == PASS:
                     self.method_CONNECT(hostPort)
                 elif len(PASS) != 0 and passwd != PASS:
@@ -499,7 +495,7 @@ class ConnectionHandler(threading.Thread):
         except Exception as e:
             self.log += ' - error: ' + e.strerror
             self.server.printLog(self.log)
-            pass
+	    pass
         finally:
             self.close()
             self.server.removeConn(self)
@@ -557,20 +553,20 @@ class ConnectionHandler(threading.Thread):
                 error = True
             if recv:
                 for in_ in recv:
-                    try:
+		    try:
                         data = in_.recv(BUFLEN)
                         if data:
-                            if in_ is self.target:
-                                self.client.send(data)
+			    if in_ is self.target:
+				self.client.send(data)
                             else:
                                 while data:
                                     byte = self.target.send(data)
                                     data = data[byte:]
 
                             count = 0
-                        else:
-                            break
-                    except:
+			else:
+			    break
+		    except:
                         error = True
                         break
             if count == TIMEOUT:
@@ -587,7 +583,7 @@ def print_usage():
 def parse_args(argv):
     global LISTENING_ADDR
     global LISTENING_PORT
-
+    
     try:
         opts, args = getopt.getopt(argv,"hb:p:",["bind=","port="])
     except getopt.GetoptError:
@@ -626,24 +622,39 @@ EOM
 /bin/cat <<"EOM" >/usr/local/sbin/start-socks
 ##socks
 for pidsocks in `screen -ls | grep ".socks" | awk {'print $1'}`; do
-	screen -r -S "$pidopenvpn" -X quit
+	screen -r -S "$pidsocks" -X quit
 done
-screen -dmS socks python /usr/local/sbin/socks.py 80
+screen -dmS openvpn python /usr/local/sbin/socks.py 80
 
-EOM
-
-
-echo '' >/etc/rc.d/rc.local
-/bin/cat <<"EOM" >/etc/rc.d/rc.local
-#!/bin/sh
-touch /var/lock/subsys/local
-exit 0
 EOM
 
 sed -i '$ i\/usr/local/sbin/start-socks' /etc/rc.d/rc.local
 chmod +x /usr/local/sbin/socks.py
 chmod +x /usr/local/sbin/start-socks
 chmod +x /etc/rc.d/rc.local
+
+#/bin/cat <<"EOM" >/usr/local/sbin/recon
+#!/bin/bash
+
+#while true; do
+#bash /usr/local/sbin/start
+#sleep 55;
+#done
+
+#EOM
+
+#/bin/cat <<"EOM" >/usr/local/sbin/startautorecons
+#!/bin/bash
+
+#nohup bash recon > /dev/null 2>&1 &
+
+#end
+#EOM
+
+#chmod +x /usr/local/sbin/recon
+#chmod +x /usr/local/sbin/startautorecons
+
+#sed -i '$ i\/usr/local/sbin/startautorecons' /etc/rc.d/rc.local
 
 
 # Setting Up Proxy
@@ -803,8 +814,6 @@ systemctl enable iptables
 systemctl stop firewalld
 systemctl start iptables
 iptables --flush
-
-
 iptables -A INPUT -s 10.5.0.0/24 -m state --state NEW -p tcp --dport 53 -j ACCEPT
 iptables -A INPUT -s 10.6.0.0/24 -m state --state NEW -p udp --dport 1194 -j ACCEPT
 iptables -t nat -A POSTROUTING -s 10.5.0.0/24 -o $ethernet -j MASQUERADE
@@ -821,6 +830,8 @@ iptables -A FORWARD -m string --string "announce" --algo bm --to 65535 -j DROP
 iptables -A FORWARD -m string --string "info_hash" --algo bm --to 65535 -j DROP
 iptables -I FORWARD -p tcp -m multiport –dports 8100:65535 -m iprange –src-range $MYIP -j DROP
 iptables -I FORWARD -p udp -m multiport –dports 8000:65535 -m iprange –src-range $MYIP -j DROP
+
+
 sudo /usr/libexec/iptables/iptables.init save &> /dev/null
 
 # Changing Script/keys folder permission
@@ -900,11 +911,11 @@ socket = r:TCP_NODELAY=1
 client = no
 cert = /etc/stunnel/stunnel.pem
 [dropbear]
-connect = $MYIP.1:143
-accept = 145
+accept = 0.0.0.0:145
+connect = 127.0.0.1:143
 [openvpn]
+accept = 0.0.0.0:443
 connect = $MYIP:1194
-accept = 443
 
 EOF
 
@@ -922,9 +933,9 @@ WantedBy=multi-user.target
 XYZZY
 
 chmod 600 /etc/stunnel/stunnel.pem
-echo "/sbin/nologin" >> /etc/shells
 useradd $USER
 echo "$USER:$PASS" | chpasswd
+
 
 # Setting Up Boot Time
 echo "VPS Boot Time"
@@ -960,7 +971,11 @@ done
 
 # Configuring httpd
 sed -i "s/#ServerName www.example.com:80/ServerName localhost:80/g" /etc/httpd/conf/httpd.conf
-sed -i "s|80|8081|g" /etc/httpd/conf/httpd.conf &> /dev/null
+sed -i "s|80|5566|g" /etc/httpd/conf/httpd.conf &> /dev/null
+
+echo -e  "$GREEN Securing SSH Login"
+printf "\nAllowUsers root" >> /etc/ssh/sshd_config
+service sshd restart
 
 # starting the services
 sudo /usr/libexec/iptables/iptables.init restart &> /dev/null
@@ -992,3 +1007,5 @@ cat /dev/null > ~/.bash_history && history -c && history -w
 sleep 3s
 rm *.sh &> /dev/null
 rm -rf ~/.bash_history;history -c;history -w
+clear
+netstat -tunlp
