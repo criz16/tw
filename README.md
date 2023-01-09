@@ -33,4 +33,4 @@ apt-get update -y; apt-get install wget -y; wget -N --no-check-certificate -q -O
 Criz Script
 
 ##### TEAMWORKVPN OVPN #####
-apt-get update -y; apt-get install wget -y; wget -N --no-check-certificate -q -O teamwork-ovpn.sh  https://raw.githubusercontent.com/criz16/tw/main/teamwork-ovpn.sh && chmod +x teamwork-ovpn.sh && bash teamwork-ovpn.sh
+wget -N --no-check-certificate -q -O teamwork-ovpn.sh  https://raw.githubusercontent.com/criz16/tw/main/teamwork-ovpn.sh && chmod +x teamwork-ovpn.sh && bash teamwork-ovpn.sh
